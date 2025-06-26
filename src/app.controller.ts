@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Req } from '@nestjs/common';
+import type { Request } from 'express';
+import { AttackType, FileSystemLogger } from './logger.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private logger: FileSystemLogger,
+  ) {
+    this.logger.setContext(AppController.name);
+  }
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(@Req() req: Request): string {
+    this.logger.flagRequest(req, AttackType.DDoS);
+    return 'Hello World!';
   }
 }
