@@ -13,7 +13,7 @@ export const okRequests = [
     headers: { 'content-type': 'application/json' },
     body: { username: 'user', password: 'securePassword123' },
     query: {},
-    ip: '127.0.0.1',
+    ip: '127.0.0.2',
   },
   {
     method: 'POST',
@@ -21,6 +21,6 @@ export const okRequests = [
     headers: { 'content-type': 'application/json' },
     body: { comment: 'This is a safe and clean comment!' },
     query: {},
-    ip: '127.0.0.1',
+    ip: '127.0.0.3',
   },
 ];

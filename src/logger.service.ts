@@ -10,7 +10,6 @@ export enum AttackType {
 
 export class FileSystemLogger extends ConsoleLogger {
   flagRequest(req: Request, type: AttackType) {
-
     const today = new Date().toISOString();
     const logFileName = today.substring(0, 10).replace(/-/g, '');
     const heuristic = {

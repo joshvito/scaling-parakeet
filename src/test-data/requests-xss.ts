@@ -36,7 +36,9 @@ export const xssRequests = [
     url: '/search',
     headers: {},
     body: {},
-    query: { q: "javascript&#58document;cookieStore.get('super_secret_cookie'&#41;.then((e&#41; => {document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].value=`${e.name} = ${e.value}`;document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].dispatchEvent(new Event('input'&#41;&#41;;document.getElementsByClassName('v-text-field__slot'&#41;[1].nextElementSibling.childNodes[0].click(&#41;}&#41;" },
+    query: {
+      q: "javascript&#58document;cookieStore.get('super_secret_cookie'&#41;.then((e&#41; => {document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].value=`${e.name} = ${e.value}`;document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].dispatchEvent(new Event('input'&#41;&#41;;document.getElementsByClassName('v-text-field__slot'&#41;[1].nextElementSibling.childNodes[0].click(&#41;}&#41;",
+    },
     ip: '127.0.0.1',
-  }
+  },
 ];
