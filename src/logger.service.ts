@@ -31,7 +31,7 @@ export class FileSystemLogger extends ConsoleLogger {
       `${logFileName}.log.json`,
       '\n' + JSON.stringify(heuristic),
       (err) => {
-        if (err) super.error('Error writing to file', err);
+        if (err) super.error('Error writing to log file', err);
       },
     );
   }
