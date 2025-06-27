@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/c
 import { AppController } from './app.controller';
 import { LoggerModule } from './logger.module';
 import { InjectionMiddleware } from './injection.middleware';
+import { CrossSiteScriptingMiddleware } from './xss.middleware';
 
 @Module({
   imports: [LoggerModule],
@@ -13,10 +14,11 @@ export class AppModule implements NestModule{
     consumer
       .apply(
         InjectionMiddleware,
+        CrossSiteScriptingMiddleware,
       )
       .forRoutes({
         path: '*',
-        method: RequestMethod.GET,
+        method: RequestMethod.ALL,
       });
   }
 }

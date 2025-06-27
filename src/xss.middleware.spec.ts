@@ -1,18 +1,18 @@
-import { InjectionMiddleware } from './injection.middleware';
 import { AttackType, FileSystemLogger } from './logger.service';
 import { okRequests } from './test-data/requests-ok';
-import { sqlInjectionRequests } from './test-data/requests.sql';
+import { xssRequests } from './test-data/requests-xss';
+import { CrossSiteScriptingMiddleware } from './xss.middleware';
 jest.mock('./logger.service');
 
-describe('InjectionMiddleware', () => {
-    let middleware: InjectionMiddleware;
+describe('CrossSiteScriptingMiddleware', () => {
+    let middleware: CrossSiteScriptingMiddleware;
     let mocklogger: FileSystemLogger;
     const mockResponse = [{ id: 1, name: 'Unit Tests are cool', first: 'Luke', last: 'Skywacker' }];
 
     beforeEach(() => {
         mocklogger = new FileSystemLogger();
         mocklogger.flagRequest = jest.fn();
-        middleware = new InjectionMiddleware(mocklogger);
+        middleware = new CrossSiteScriptingMiddleware(mocklogger);
     });
 
     it('should be defined', () => {
@@ -20,12 +20,12 @@ describe('InjectionMiddleware', () => {
     });
 
     test.each([
-        ...sqlInjectionRequests
-    ])('should log sqlinjection findings', (req: any) => {
+        ...xssRequests
+    ])('should log cross site scripting findings', (req: any) => {
         const next = jest.fn();
 
         middleware.use(req, mockResponse as unknown as any, next);
-        expect(mocklogger.flagRequest).toHaveBeenCalledWith(req, AttackType.SqlInjection);
+        expect(mocklogger.flagRequest).toHaveBeenCalledWith(req, AttackType.XSS);
         expect(next).toHaveBeenCalled();
     });
 

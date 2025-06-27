@@ -3,7 +3,7 @@ export const xssRequests = [
     method: 'POST',
     url: '/comment',
     headers: { 'content-type': 'application/json' },
-    body: { comment: '<script>alert("xss")</script>' },
+    body: { comment: '<script>alert("lskywacker was here;")</script>' },
     query: {},
     ip: '127.0.0.1',
   },
@@ -31,4 +31,12 @@ export const xssRequests = [
     query: {},
     ip: '127.0.0.1',
   },
+  {
+    method: 'GET',
+    url: '/search',
+    headers: {},
+    body: {},
+    query: { q: "javascript&#58document;cookieStore.get('super_secret_cookie'&#41;.then((e&#41; => {document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].value=`${e.name} = ${e.value}`;document.getElementsByClassName('v-text-field__slot'&#41;[1].childNodes[1].dispatchEvent(new Event('input'&#41;&#41;;document.getElementsByClassName('v-text-field__slot'&#41;[1].nextElementSibling.childNodes[0].click(&#41;}&#41;" },
+    ip: '127.0.0.1',
+  }
 ];
