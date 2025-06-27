@@ -4,9 +4,7 @@ import { AttackType, FileSystemLogger } from './logger.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private logger: FileSystemLogger,
-  ) {
+  constructor(private logger: FileSystemLogger) {
     this.logger.setContext(AppController.name);
   }
 
