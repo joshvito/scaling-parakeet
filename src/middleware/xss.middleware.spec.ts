@@ -1,8 +1,8 @@
-import { AttackType, FileSystemLogger } from './logger.service';
-import { okRequests } from './test-data/requests-ok';
-import { xssRequests } from './test-data/requests-xss';
+import { AttackType, FileSystemLogger } from '../logger.service';
+import { okRequests } from '../test-data/requests-ok';
+import { xssRequests } from '../test-data/requests-xss';
 import { CrossSiteScriptingMiddleware } from './xss.middleware';
-jest.mock('./logger.service');
+jest.mock('../logger.service');
 
 describe('CrossSiteScriptingMiddleware', () => {
     let middleware: CrossSiteScriptingMiddleware;

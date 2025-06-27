@@ -1,8 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { LoggerModule } from './logger.module';
-import { InjectionMiddleware } from './injection.middleware';
-import { CrossSiteScriptingMiddleware } from './xss.middleware';
+import { CrossSiteScriptingMiddleware } from './middleware/xss.middleware';
+import { InjectionMiddleware } from './middleware/injection.middleware';
+import { DdosMiddleware } from './middleware/ddos.middleware';
 
 @Module({
   imports: [LoggerModule],
@@ -15,6 +16,7 @@ export class AppModule implements NestModule{
       .apply(
         InjectionMiddleware,
         CrossSiteScriptingMiddleware,
+        DdosMiddleware,
       )
       .forRoutes({
         path: '*',

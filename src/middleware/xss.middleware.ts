@@ -1,9 +1,10 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { AttackType, FileSystemLogger } from './logger.service';
+import { AttackType, FileSystemLogger } from '../logger.service';
 
 @Injectable()
 export class CrossSiteScriptingMiddleware implements NestMiddleware {
+    attackType = AttackType.XSS;
     constructor(
         private readonly logger: FileSystemLogger,
     ) {  }
@@ -11,7 +12,7 @@ export class CrossSiteScriptingMiddleware implements NestMiddleware {
     use(req: Request, res: Response, next: NextFunction) {
         next();
         if(this.detect(req)){
-            this.logger.flagRequest(req, AttackType.XSS);
+            this.logger.flagRequest(req, this.attackType);
         }
     }
 
