@@ -8,7 +8,7 @@ export class AppController {
   }
 
   @All('*')
-  async proxy(@Req() req: Request, @Res() res: Response) {
+  async proxy(@Req() req: Request) {
     const targetBaseUrl = process.env.DOWNSTREAM_SERVER_LOCATION ?? 'http://swapi.py4e.com/api';
     const targetUrl = `${targetBaseUrl}${req.originalUrl}`;
     const response = await fetch(targetUrl, {
