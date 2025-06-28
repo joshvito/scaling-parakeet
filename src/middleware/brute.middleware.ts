@@ -3,11 +3,11 @@ import { Request, Response, NextFunction } from 'express';
 import { AttackType, FileSystemLogger } from '../logger.service';
 
 @Injectable()
-export class DdosMiddleware implements NestMiddleware {
+export class BruteForceMiddleware implements NestMiddleware {
   // Set the defaults low for testing purposes;
-  private readonly maxRequestsPerMinute = this.getEnvInt('MAX_ATTEMPTS', 1);
+  private readonly maxRequestsPerMinute = this.getEnvInt('MAX_ATTEMPTS', 3);
   private readonly windowMs = this.getEnvInt('WINDOW_MS', 0.5 * 1000);
-  private readonly attackType = AttackType.DDoS;
+  private readonly attackType = AttackType.Brute;
   private ipAttempts = new Map<string, number[]>();
 
   constructor(private readonly logger: FileSystemLogger) {}

@@ -1,4 +1,4 @@
-export const ddosRequests = Array.from({ length: 6 }).map((_, i) => ({
+export const bruteRequests = Array.from({ length: 6 }).map((_, i) => ({
   method: 'POST',
   url: '/login',
   headers: { 'content-type': 'application/json' },

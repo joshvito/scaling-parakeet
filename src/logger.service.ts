@@ -5,7 +5,7 @@ import * as fs from 'fs';
 export enum AttackType {
   SqlInjection = 'SQL Injection',
   XSS = 'Cross-Site Scripting',
-  DDoS = 'Denial of Service',
+  Brute = 'Brute Force',
 }
 
 export class FileSystemLogger extends ConsoleLogger {
