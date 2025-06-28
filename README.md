@@ -10,5 +10,5 @@ ToDo: requirements
 1. ~~return request/data from a downstream api (dummy?)~~
 
 ToDo: Stretches
-1. figure how to call this with lots of dummy traffic (postman collection/stress tester)
+1. ~~figure how to call this with lots of dummy traffic (postman collection/stress tester)~~
 1. consider reformatting json logs to opentelemetry
