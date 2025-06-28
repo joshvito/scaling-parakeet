@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  proxy:
+    build:
+      context: .
+      target: proxy
+    ports:
+      - "3000:80"
+    environment:
+      - PORT=80
+      - DOWNSTREAM_SERVER_LOCATION=http://swapi.py4e.com/api
+      - MAX_ATTEMPTS=10
+      - WINDOW_MS=60000
+
+  tests:
+    build:
+      context: .
+      target: tests
+    depends_on:
+      - proxy
+    restart: "no"
